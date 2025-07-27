@@ -1,0 +1,41 @@
+-- Ist  Write your Query here
+-- Create Authors table
+CREATE TABLE authors (
+    author_id INT PRIMARY KEY,
+        name VARCHAR(50),
+            country VARCHAR(50)
+            );
+
+            -- Create Books table
+            CREATE TABLE books (
+                book_id INT PRIMARY KEY,
+                    title VARCHAR(100),
+                        author_id INT,
+                            FOREIGN KEY (author_id) REFERENCES authors(author_id)
+                            );
+describe authors;
+desc books;
+
+
+
+-- 2nd 
+NSERT INTO authors (author_id, name, country)
+VALUES
+  (1, 'Ashish', 'India'),
+   (2, 'Smaran', 'USA'),
+   (3, 'Vaibhav', 'UK');
+
+
+INSERT INTO books (book_id, title, author_id)
+VALUES
+  (101, 'Data Science Basics', 1),
+    (102, 'AI in Education', 2),
+      (103, 'SQL Simplified', 1);
+
+select *from authors;
+select * from books;
+
+
+-- 3rd 
+select books.title,authors.name,authors.country from authors inner join books 
+where authors.author_id=books.author_id;
